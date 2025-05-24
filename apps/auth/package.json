@@ -19,6 +19,7 @@
     "@elearning/eslint-config": "workspace:*",
     "@elearning/typescript-config": "workspace:*",
     "@types/node": "^22.15.3",
+    "dotenv": "^16.5.0",
     "eslint": "^9.26.0",
     "tsx": "^4.19.4",
     "typescript": "5.8.2"
