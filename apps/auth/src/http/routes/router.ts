@@ -1,15 +1,13 @@
-import { FastifyInstance } from 'fastify';
+import { FastifyInstance } from "fastify";
+
+import { container } from "@/container";
 
 export async function router(app: FastifyInstance) {
-  app.post('/login', async (_, response) => {
-    return response.status(200).send({
-      message: 'Login endpoint is not implemented yet.',
-    });
+  app.post("/login", async (request, response) => {
+    return container.loginController.handle(request, response);
   });
 
-  app.post('/signup', async (request, response) => {
-    return response.status(200).send({
-      message: 'Signup endpoint is not implemented yet.',
-    });
+  app.post("/signup", async (request, response) => {
+    return container.signupController.handle(request, response);
   });
 }
