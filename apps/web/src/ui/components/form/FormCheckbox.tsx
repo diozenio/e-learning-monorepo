@@ -1,6 +1,6 @@
-import { Checkbox } from "@/ui/primitives/checkbox";
-import { Label } from "@/ui/primitives/label";
-import { useId } from "react";
+import { Checkbox } from '@/ui/primitives/checkbox';
+import { Label } from '@/ui/primitives/label';
+import { useId } from 'react';
 
 interface FormCheckboxProps {
   label?: string;
@@ -15,7 +15,7 @@ function FormCheckbox({ label, name }: FormCheckboxProps) {
     <div className="flex items-center gap-2">
       <Checkbox id={id} />
       {label && (
-        <Label htmlFor={id} className="font-normal text-muted-foreground">
+        <Label htmlFor={id} className="text-muted-foreground font-normal">
           {label}
         </Label>
       )}

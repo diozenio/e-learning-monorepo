@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
-import { Lora } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Lora } from 'next/font/google';
+import './globals.css';
 
 const loraSerif = Lora({
-  variable: "--font-lora-serif",
-  subsets: ["latin"],
+  variable: '--font-lora-serif',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "E-Learning Platform",
-  description: "A platform for online learning",
+  title: 'E-Learning Platform',
+  description: 'A platform for online learning',
 };
 
 export default function RootLayout({

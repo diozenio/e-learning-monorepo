@@ -1,8 +1,8 @@
-import { Button } from "@/ui/primitives/button";
-import { FormInput } from "@/ui/components/form";
-import { Divider } from "@/ui/primitives/divider";
-import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
+import { Button } from '@/ui/primitives/button';
+import { FormInput } from '@/ui/components/form';
+import { Divider } from '@/ui/primitives/divider';
+import Link from 'next/link';
+import { FcGoogle } from 'react-icons/fc';
 
 function SignUpForm() {
   return (
@@ -40,14 +40,14 @@ function SignUpForm() {
       </Button>
 
       <div className="text-center text-sm">
-        Already have an account?{" "}
+        Already have an account?{' '}
         <Link className="underline hover:no-underline" href="/auth/login">
           Login here
         </Link>
       </div>
 
-      <p className="text-center text-xs text-muted-foreground">
-        By signing up you agree to our{" "}
+      <p className="text-muted-foreground text-center text-xs">
+        By signing up you agree to our{' '}
         <Link className="underline hover:no-underline" href="#">
           Terms
         </Link>

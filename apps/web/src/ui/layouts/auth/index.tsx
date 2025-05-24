@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 interface AuthLayoutProps {
   title: string;
@@ -8,23 +8,23 @@ interface AuthLayoutProps {
 
 function AuthLayout({ title, description, children }: AuthLayoutProps) {
   return (
-    <div className="h-screen w-full flex flex-row">
+    <div className="flex h-screen w-full flex-row">
       {/* Left Side */}
-      <div className="h-full w-1/2 py-4 px-8">
-        <div className="w-full h-full mx-auto flex flex-col items-center justify-center space-y-8 max-w-112">
+      <div className="h-full w-1/2 px-8 py-4">
+        <div className="max-w-112 mx-auto flex h-full w-full flex-col items-center justify-center space-y-8">
           <div className="space-y-2 text-center">
-            <h1 className="font-bold text-4xl">{title}</h1>
+            <h1 className="text-4xl font-bold">{title}</h1>
             <p className="text-muted-foreground">{description}</p>
           </div>
-          <div className="flex flex-col gap-6 w-full">{children}</div>
+          <div className="flex w-full flex-col gap-6">{children}</div>
         </div>
       </div>
 
       {/* Right Side */}
-      <div className="h-full w-1/2 ">
-        <div className="w-full h-full bg-primary relative select-none">
+      <div className="h-full w-1/2">
+        <div className="bg-primary relative h-full w-full select-none">
           <Image
-            src={"/images/auth.jpg"}
+            src={'/images/auth.jpg'}
             fill
             alt="Background"
             className="object-cover"

@@ -1,8 +1,8 @@
-import { FormCheckbox, FormInput } from "@/ui/components/form";
-import { Button } from "@/ui/primitives/button";
-import { Divider } from "@/ui/primitives/divider";
-import { FcGoogle } from "react-icons/fc";
-import Link from "next/link";
+import { FormCheckbox, FormInput } from '@/ui/components/form';
+import { Button } from '@/ui/primitives/button';
+import { Divider } from '@/ui/primitives/divider';
+import { FcGoogle } from 'react-icons/fc';
+import Link from 'next/link';
 
 function LoginForm() {
   return (
@@ -41,7 +41,7 @@ function LoginForm() {
       </Button>
 
       <div className="text-center text-sm">
-        Don&apos;t have an account?{" "}
+        Don&apos;t have an account?{' '}
         <Link className="underline hover:no-underline" href="/auth/signup">
           Sign up
         </Link>
