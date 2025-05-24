@@ -1,0 +1,9 @@
+{
+  "extends": "@elearning/typescript-config/nodejs.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}

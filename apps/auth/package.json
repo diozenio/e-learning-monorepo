@@ -1,0 +1,26 @@
+{
+  "name": "auth",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/http/server.ts",
+    "lint": "eslint --fix"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.0.1",
+    "bcryptjs": "^3.0.2",
+    "dayjs": "^1.11.13",
+    "fastify": "^5.2.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.14.1",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@elearning/eslint-config": "workspace:*",
+    "@elearning/typescript-config": "workspace:*",
+    "@types/node": "^22.15.3",
+    "eslint": "^9.26.0",
+    "tsx": "^4.19.4",
+    "typescript": "5.8.2"
+  }
+}
