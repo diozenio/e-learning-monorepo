@@ -1,6 +1,7 @@
+import { useId } from 'react';
+
 import { Input } from '@/ui/primitives/input';
 import { Label } from '@/ui/primitives/label';
-import { useId } from 'react';
 
 interface FormInputProps {
   label?: string;

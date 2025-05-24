@@ -1,8 +1,9 @@
-import { Button } from '@/ui/primitives/button';
-import { FormInput } from '@/ui/components/form';
-import { Divider } from '@/ui/primitives/divider';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
+
+import { FormInput } from '@/ui/components/form';
+import { Button } from '@/ui/primitives/button';
+import { Divider } from '@/ui/primitives/divider';
 
 function SignUpForm() {
   return (

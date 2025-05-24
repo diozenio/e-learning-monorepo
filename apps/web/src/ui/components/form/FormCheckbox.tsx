@@ -1,6 +1,7 @@
+import { useId } from 'react';
+
 import { Checkbox } from '@/ui/primitives/checkbox';
 import { Label } from '@/ui/primitives/label';
-import { useId } from 'react';
 
 interface FormCheckboxProps {
   label?: string;

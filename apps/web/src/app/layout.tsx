@@ -1,6 +1,7 @@
+import './globals.css';
+
 import type { Metadata } from 'next';
 import { Lora } from 'next/font/google';
-import './globals.css';
 
 const loraSerif = Lora({
   variable: '--font-lora-serif',

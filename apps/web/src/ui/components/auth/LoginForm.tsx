@@ -1,8 +1,9 @@
+import Link from 'next/link';
+import { FcGoogle } from 'react-icons/fc';
+
 import { FormCheckbox, FormInput } from '@/ui/components/form';
 import { Button } from '@/ui/primitives/button';
 import { Divider } from '@/ui/primitives/divider';
-import { FcGoogle } from 'react-icons/fc';
-import Link from 'next/link';
 
 function LoginForm() {
   return (
