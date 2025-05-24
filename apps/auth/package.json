@@ -18,6 +18,7 @@
   "devDependencies": {
     "@elearning/eslint-config": "workspace:*",
     "@elearning/typescript-config": "workspace:*",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.15.3",
     "dotenv": "^16.5.0",
     "eslint": "^9.26.0",
