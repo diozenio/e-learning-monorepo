@@ -2,9 +2,12 @@ import fastify from 'fastify';
 
 import { env } from '@/env';
 import { router } from '@/http/routes/router';
+import corsPlugin from '@/plugins/cors';
 import { errorHandler } from '@/shared/http/errors/errorHandler';
 
 const app = fastify();
+
+corsPlugin(app);
 
 app.setErrorHandler(errorHandler);
 
