@@ -1,11 +1,8 @@
-import { HttpResponse } from "../HttpResponse";
+import { ErrorBase } from './ErrorBase';
 
-export class AppError extends HttpResponse {
-  public readonly errors?: string[];
-
-  constructor(message: string, statusCode = 400, errors?: string[]) {
-    super(message, statusCode);
-    this.errors = errors;
+export class AppError<ErrorType = string[]> extends ErrorBase<ErrorType> {
+  constructor(message: string, statusCode = 400, errors?: ErrorType) {
+    super(message, statusCode, errors);
   }
 
   public toResponse() {
