@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 
+import { SocialButton } from '@/ui/components/auth/SocialButton';
 import { FormCheckbox, FormInput } from '@/ui/components/form';
 import { Button } from '@/ui/primitives/button';
 import { Divider } from '@/ui/primitives/divider';
@@ -36,10 +37,11 @@ function LoginForm() {
 
       <Divider label="Or" />
 
-      <Button variant="outline" className="w-full">
-        <FcGoogle />
-        Login with Google
-      </Button>
+      <SocialButton
+        label="Login with Google"
+        provider="google"
+        disabled={isPending}
+      />
 
       <div className="text-center text-sm">
         Don&apos;t have an account?{' '}
