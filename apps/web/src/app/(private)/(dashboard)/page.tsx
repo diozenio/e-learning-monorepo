@@ -1,7 +1,7 @@
 'use client';
 import { useAuthStore } from '@/store/auth';
 
-export default function Home() {
+export default function Dashboard() {
   const { user } = useAuthStore();
 
   return (
