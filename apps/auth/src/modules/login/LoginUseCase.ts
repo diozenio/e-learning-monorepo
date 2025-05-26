@@ -25,6 +25,13 @@ class LoginUseCase {
       payload: { sub: user.id, email: user.email },
     });
 
+    if (!token) {
+      throw new AppError(
+        "We couldn't log you in at the moment. Please try again later.",
+        500
+      );
+    }
+
     return {
       token,
       user: {
