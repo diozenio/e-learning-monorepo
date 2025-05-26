@@ -1,15 +1,19 @@
-import Link from 'next/link';
-import { FcGoogle } from 'react-icons/fc';
+'use client';
 
+import Link from 'next/link';
+
+import { useSignUp } from '@/hooks/auth/useSignUp';
 import { SocialButton } from '@/ui/components/auth/SocialButton';
 import { FormInput } from '@/ui/components/form';
 import { Button } from '@/ui/primitives/button';
 import { Divider } from '@/ui/primitives/divider';
 
 function SignUpForm() {
+  const { handleSubmit, isPending } = useSignUp();
+
   return (
     <div className="contents">
-      <form className="space-y-6">
+      <form className="space-y-6" onSubmit={handleSubmit}>
         <div className="space-y-4">
           <FormInput name="name" label="Full Name" placeholder="John Doe" />
           <FormInput
@@ -31,7 +35,7 @@ function SignUpForm() {
             placeholder="Re-enter your password"
           />
         </div>
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full" loading={isPending}>
           Sign up
         </Button>
       </form>

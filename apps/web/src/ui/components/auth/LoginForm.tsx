@@ -1,15 +1,19 @@
-import Link from 'next/link';
-import { FcGoogle } from 'react-icons/fc';
+'use client';
 
+import Link from 'next/link';
+
+import { useLogin } from '@/hooks/auth/useLogin';
 import { SocialButton } from '@/ui/components/auth/SocialButton';
 import { FormCheckbox, FormInput } from '@/ui/components/form';
 import { Button } from '@/ui/primitives/button';
 import { Divider } from '@/ui/primitives/divider';
 
 function LoginForm() {
+  const { handleSubmit, isPending } = useLogin();
+
   return (
     <div className="contents">
-      <form className="space-y-6">
+      <form className="space-y-6" onSubmit={handleSubmit}>
         <div className="space-y-4">
           <FormInput
             name="email"
@@ -30,7 +34,7 @@ function LoginForm() {
             Forgot password?
           </Link>
         </div>
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full" loading={isPending}>
           Login
         </Button>
       </form>
