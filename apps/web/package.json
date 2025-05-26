@@ -29,7 +29,8 @@
     "react-icons": "^5.5.0",
     "tailwind-merge": "^3.3.0",
     "tailwindcss": "^4.1.7",
-    "zod": "^3.25.23"
+    "zod": "^3.25.23",
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@elearning/eslint-config": "workspace:*",
