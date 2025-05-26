@@ -5,7 +5,7 @@ const MIN_LENGTH = 8;
 const hasUppercase = /[A-Z]/;
 const hasLowercase = /[a-z]/;
 const hasNumber = /\d/;
-const hasSpecialChar = /[@$!%*?#&]/;
+const hasSpecialChar = /[^\w\s]/;
 
 export const signupParams = z.object({
   name: z
