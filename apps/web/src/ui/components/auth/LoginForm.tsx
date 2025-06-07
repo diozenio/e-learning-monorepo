@@ -1,18 +1,26 @@
 'use client';
 
+import { CircleX } from 'lucide-react';
 import Link from 'next/link';
 
 import { useLogin } from '@/hooks/auth/useLogin';
 import { SocialButton } from '@/ui/components/auth/SocialButton';
 import { FormCheckbox, FormInput } from '@/ui/components/form';
+import { Alert, AlertDescription } from '@/ui/primitives/alert';
 import { Button } from '@/ui/primitives/button';
 import { Divider } from '@/ui/primitives/divider';
 
 function LoginForm() {
-  const { handleSubmit, isPending, errors } = useLogin();
+  const { handleSubmit, isPending, errors, message, success } = useLogin();
 
   return (
     <div className="contents">
+      {!success && message && (
+        <Alert variant="destructive">
+          <CircleX />
+          <AlertDescription>{message}</AlertDescription>
+        </Alert>
+      )}
       <form className="space-y-6" onSubmit={handleSubmit}>
         <div className="space-y-4">
           <FormInput
