@@ -12,7 +12,10 @@ class SignupUseCase {
     const userExists = await this.userRepository.findByEmail(email);
 
     if (userExists) {
-      throw new AppError('User already exists', 400);
+      throw new AppError(
+        'This email is already associated with an existing account.',
+        400
+      );
     }
 
     const hashedPassword = await hashPassword(password);
