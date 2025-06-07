@@ -9,7 +9,7 @@ import { Button } from '@/ui/primitives/button';
 import { Divider } from '@/ui/primitives/divider';
 
 function LoginForm() {
-  const { handleSubmit, isPending } = useLogin();
+  const { handleSubmit, isPending, errors } = useLogin();
 
   return (
     <div className="contents">
@@ -20,12 +20,14 @@ function LoginForm() {
             label="Email"
             placeholder="hi@youremail.com"
             type="email"
+            errors={errors?.email}
           />
           <FormInput
             name="password"
             label="Password"
             placeholder="Enter your password"
             type="password"
+            errors={errors?.password}
           />
         </div>
         <div className="flex justify-between gap-2">

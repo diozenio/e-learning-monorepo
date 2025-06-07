@@ -9,6 +9,7 @@ interface FormInputProps {
   placeholder?: string;
   type?: string;
   required?: boolean;
+  errors?: string[];
 }
 
 function FormInput({
@@ -16,6 +17,7 @@ function FormInput({
   name,
   required = true,
   type = 'text',
+  errors,
   ...rest
 }: FormInputProps) {
   const randomID = useId();
@@ -29,6 +31,16 @@ function FormInput({
         </Label>
       )}
       <Input id={id} name={name} required={required} type={type} {...rest} />
+      {errors && errors.length > 0 && (
+        <p className="text-xs text-red-500">
+          {errors.map((error, index) => (
+            <span key={index}>
+              {error}
+              {index < errors.length - 1 && ', '}
+            </span>
+          ))}
+        </p>
+      )}
     </div>
   );
 }
