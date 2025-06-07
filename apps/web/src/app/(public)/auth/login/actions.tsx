@@ -18,7 +18,7 @@ export async function loginAction(
     const response = await services.AuthService.login(email, password);
     const data = response.data;
 
-    sessionCookieStore.set(data.token);
+    await sessionCookieStore.set(data.token);
 
     return {
       success: true,

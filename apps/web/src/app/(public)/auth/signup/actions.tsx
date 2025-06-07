@@ -22,7 +22,7 @@ export async function signupAction(
     );
     const data = response.data;
 
-    sessionCookieStore.set(data.token);
+    await sessionCookieStore.set(data.token);
 
     return {
       success: true,
