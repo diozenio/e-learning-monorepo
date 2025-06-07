@@ -12,13 +12,19 @@ class LoginUseCase {
     const user = await this.userRepository.findByEmail(email);
 
     if (!user) {
-      throw new AppError('Invalid credentials', 401);
+      throw new AppError(
+        'Authentication failed. Please verify your credentials.',
+        401
+      );
     }
 
     const passwordMatch = await comparePasswords(password, user.password);
 
     if (!passwordMatch) {
-      throw new AppError('Invalid credentials', 401);
+      throw new AppError(
+        'Authentication failed. Please verify your credentials.',
+        401
+      );
     }
 
     const token = generateToken({
