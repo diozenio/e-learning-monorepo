@@ -41,8 +41,6 @@ export function middleware(request: NextRequest) {
   if (sessionToken && !publicRoute) {
     const tokenExpired = isTokenExpired(sessionToken.value);
 
-    console.log(`Token expired: ${tokenExpired}`);
-
     if (tokenExpired) {
       const redirectUrl = request.nextUrl.clone();
       redirectUrl.pathname = REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE;
