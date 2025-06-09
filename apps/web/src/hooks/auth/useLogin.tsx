@@ -1,17 +1,16 @@
+import { useRouter } from 'next/router';
+
 import { loginAction } from '@/app/(public)/auth/login/actions';
 import { AuthPayload } from '@/core/domain/models/auth';
-import { useHandleAuthSuccess } from '@/utils/auth/handleAuthSuccess';
 
 import { useFormState } from '../useFormState';
 
 export function useLogin() {
-  const handleAuthSuccess = useHandleAuthSuccess();
+  const router = useRouter();
 
   const [{ success, message, errors }, handleSubmit, isPending] =
-    useFormState<AuthPayload>(loginAction, ({ data }) => {
-      if (data) {
-        handleAuthSuccess(data.user);
-      }
+    useFormState<AuthPayload>(loginAction, () => {
+      router.push('/');
     });
 
   return {
