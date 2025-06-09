@@ -1,8 +1,8 @@
 'use client';
-import { useAuthStore } from '@/store/auth';
+import { useAuth } from '@/providers/AuthContext';
 
 export default function Dashboard() {
-  const { user } = useAuthStore();
+  const { user } = useAuth();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

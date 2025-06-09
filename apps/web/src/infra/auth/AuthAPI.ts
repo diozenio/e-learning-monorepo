@@ -1,3 +1,6 @@
+import { AxiosError } from 'axios';
+
+import { User } from '@/core/domain/models/auth';
 import AuthAdapter from '@/core/interfaces/adapters/AuthAdapter';
 import { authClient } from '@/lib/auth/client';
 
@@ -23,5 +26,11 @@ export default class AuthAPI extends AuthAdapter {
     });
 
     return data;
+  }
+
+  async getUserSession(): Promise<User> {
+    const { data } = await authClient.get('/auth/me');
+
+    return data.data;
   }
 }
