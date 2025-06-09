@@ -13,7 +13,9 @@ class LogoutController {
     const sessionToken = request.cookies[AUTH_COOKIE_NAME];
 
     if (!sessionToken) {
-      throw new AppError('Authentication token not provided.', 401);
+      return reply
+        .send(401)
+        .send(new AppError('Authentication token not provided.', 401));
     }
 
     await this.logoutUseCase.execute(sessionToken);
