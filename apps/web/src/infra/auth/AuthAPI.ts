@@ -1,5 +1,3 @@
-import { AxiosError } from 'axios';
-
 import { User } from '@/core/domain/models/auth';
 import AuthAdapter from '@/core/interfaces/adapters/AuthAdapter';
 import { authClient } from '@/lib/auth/client';
