@@ -1,15 +1,11 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
 
 import { services } from '@/container';
 import { User } from '@/core/domain/models/auth';
-import { useAuthStore } from '@/store/auth';
 
-export function useAuthSession() {
-  const { setUser } = useAuthStore();
-
+export function useUserSession() {
   const {
     data: user,
     isLoading,
@@ -26,21 +22,8 @@ export function useAuthSession() {
     refetchOnWindowFocus: false,
   });
 
-  useEffect(() => {
-    if (user) {
-      setUser(user);
-    }
-  }, [user, setUser]);
-
-  useEffect(() => {
-    if (isError) {
-      console.error('Error fetching user session:', error.message);
-      setUser(null);
-    }
-  }, [isError, error, setUser]);
-
   return {
-    user,
+    user: user ?? null,
     isLoading,
     isError,
     error,

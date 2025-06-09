@@ -8,60 +8,51 @@ import {
   useState,
 } from 'react';
 
-import { useAuthSession } from '@/hooks/auth/useAuthSession';
+import { User } from '@/core/domain/models/auth';
+import { useUserSession } from '@/hooks/auth/useUserSession';
 import { useAppLoadingStore } from '@/store/appLoading';
-import { useAuthStore } from '@/store/auth';
 
 interface AuthContextType {
   isAuthenticated: boolean;
   isAuthenticating: boolean;
-  user: { id: string; name: string; email: string } | null;
-  logout: () => void;
+  user: User | null;
+  // Add any other authentication-related methods or properties here
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: PropsWithChildren) {
-  const { user: zustandUser, setUser } = useAuthStore();
-  const { isLoading, fetchUserSession, error } = useAuthSession();
+  const { user, fetchUserSession, isLoading, error } = useUserSession();
   const { setLoadingState } = useAppLoadingStore();
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    async function checkSession() {
-      await fetchUserSession();
-    }
-    checkSession();
+    fetchUserSession();
   }, [fetchUserSession]);
 
   useEffect(() => {
-    setIsAuthenticated(!!zustandUser);
-  }, [zustandUser]);
+    setIsAuthenticated(!!user);
+  }, [user]);
 
   useEffect(() => {
     setLoadingState('auth', isLoading);
   }, [isLoading, setLoadingState]);
 
-  const logout = () => {
-    setUser(null);
-    // Optionally, you can clear any session cookies or tokens here by calling a logout function from the server
-  };
-
   useEffect(() => {
     if (error) {
-      setUser(null);
+      console.error('Authentication error:', error);
       setIsAuthenticated(false);
+      // Optionally, you can redirect to a login page or show an error message
     }
-  }, [error, setUser]);
+  }, [error]);
 
   return (
     <AuthContext.Provider
       value={{
         isAuthenticated,
         isAuthenticating: isLoading,
-        user: zustandUser,
-        logout,
+        user,
       }}
     >
       {children}
