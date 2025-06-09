@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import jwt, { SignOptions } from 'jsonwebtoken';
 
 import { Payload } from './types';
@@ -49,10 +49,24 @@ export function decodeToken<T extends Payload>(token: string): T | null {
   }
 }
 
-export function getTokenExpiration(token: string): Date | null {
+export function getTokenExpiration(token: string): Dayjs | null {
   const decoded = decodeToken(token);
   if (decoded && typeof decoded.exp === 'number') {
-    return dayjs.unix(decoded.exp).toDate();
+    return dayjs.unix(decoded.exp);
   }
   return null;
+}
+
+export function isTokenExpired(token: string): boolean {
+  const expirationDate = getTokenExpiration(token);
+
+  if (!expirationDate) {
+    return true;
+  }
+
+  const currentTime = dayjs();
+
+  return (
+    expirationDate.isBefore(currentTime) || expirationDate.isSame(currentTime)
+  );
 }
