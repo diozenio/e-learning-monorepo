@@ -1,3 +1,4 @@
+import { AUTH_COOKIE_NAME, isTokenExpired } from '@elearning/auth-tokens';
 import { MiddlewareConfig, NextRequest, NextResponse } from 'next/server';
 
 interface Routes {
@@ -15,7 +16,7 @@ const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = '/auth/login';
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const publicRoute = publicRoutes.find((route) => route.path === path);
-  const sessionToken = request.cookies.get('session_token');
+  const sessionToken = request.cookies.get(AUTH_COOKIE_NAME);
 
   if (!sessionToken && publicRoute) {
     return NextResponse.next();
@@ -38,10 +39,17 @@ export function middleware(request: NextRequest) {
   }
 
   if (sessionToken && !publicRoute) {
-    // Here you can add logic to check if the session is valid, e.g., by decoding the token
-    // For now, we assume the session is valid if the token exists.
-    // If you have a function to validate the session, you can call it here.
-    // Example: const isValidSession = validateSession(sessionToken);
+    const tokenExpired = isTokenExpired(sessionToken.value);
+
+    console.log(`Token expired: ${tokenExpired}`);
+
+    if (tokenExpired) {
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE;
+      const response = NextResponse.redirect(redirectUrl);
+      response.cookies.delete(AUTH_COOKIE_NAME);
+      return response;
+    }
 
     return NextResponse.next();
   }

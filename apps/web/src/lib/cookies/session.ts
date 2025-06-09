@@ -1,6 +1,6 @@
+import { AUTH_COOKIE_NAME } from '@elearning/auth-tokens';
 import { cookies } from 'next/headers';
 
-const COOKIE_NAME = 'session_token';
 const COOKIE_OPTIONS = {
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
@@ -15,7 +15,7 @@ export const sessionCookieStore = {
    */
   async set(token: string) {
     const cookieStore = await cookies();
-    cookieStore.set(COOKIE_NAME, token, COOKIE_OPTIONS);
+    cookieStore.set(AUTH_COOKIE_NAME, token, COOKIE_OPTIONS);
   },
 
   /**
@@ -24,7 +24,7 @@ export const sessionCookieStore = {
    */
   async get() {
     const cookieStore = await cookies();
-    return cookieStore.get(COOKIE_NAME)?.value ?? null;
+    return cookieStore.get(AUTH_COOKIE_NAME)?.value ?? null;
   },
 
   /**
@@ -32,6 +32,6 @@ export const sessionCookieStore = {
    */
   async clear() {
     const cookieStore = await cookies();
-    cookieStore.delete(COOKIE_NAME);
+    cookieStore.delete(AUTH_COOKIE_NAME);
   },
 };
