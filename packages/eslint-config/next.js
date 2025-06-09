@@ -55,4 +55,12 @@ export const nextJsConfig = [
       'simple-import-sort/imports': 'error',
     },
   },
+  {
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+    },
+  },
 ];
