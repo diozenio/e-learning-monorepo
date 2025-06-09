@@ -1,5 +1,5 @@
 import { AUTH_COOKIE_NAME, verifyToken } from '@elearning/auth-tokens';
-import { FastifyRequest } from 'fastify';
+import { FastifyReply, FastifyRequest } from 'fastify';
 
 import { env } from '@/env';
 import { AppError } from '@/shared/http/errors/AppError';
@@ -13,17 +13,21 @@ declare module 'fastify' {
   }
 }
 
-export async function checkAuth(request: FastifyRequest) {
+export async function checkAuth(request: FastifyRequest, reply: FastifyReply) {
   const sessionToken = request.cookies[AUTH_COOKIE_NAME];
 
   if (!sessionToken) {
-    throw new AppError('Authentication token not provided.', 401);
+    return reply
+      .status(401)
+      .send(new AppError('Authentication token not provided.', 401));
   }
 
   try {
     const { sub, email } = verifyToken(sessionToken, env.JWT_SECRET);
     request.user = { id: sub, email: email };
   } catch {
-    throw new AppError('Invalid or expired authentication token.', 401);
+    return reply
+      .status(401)
+      .send(new AppError('Invalid or expired authentication token.', 401));
   }
 }
