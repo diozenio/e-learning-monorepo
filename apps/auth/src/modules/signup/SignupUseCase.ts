@@ -1,14 +1,19 @@
 import { generateToken } from '@elearning/auth-tokens';
+import dayjs from 'dayjs';
 
 import { env } from '@/env';
 import { hashPassword } from '@/lib/security/password';
+import { IUserSessionRepository } from '@/repositories/user-sessions';
 import { IUserRepository } from '@/repositories/users';
 import { AppError } from '@/shared/http/errors/AppError';
 
 import { SignupParams } from './SignupParams';
 
 class SignupUseCase {
-  constructor(private userRepository: IUserRepository) {}
+  constructor(
+    private userRepository: IUserRepository,
+    private userSessionRepository: IUserSessionRepository
+  ) {}
 
   async execute({ name, email, password }: SignupParams) {
     const userExists = await this.userRepository.findByEmail(email);
@@ -53,6 +58,14 @@ class SignupUseCase {
         500
       );
     }
+
+    const expiresAt = dayjs().add(30, 'days').toDate();
+
+    await this.userSessionRepository.create({
+      userId: user.id,
+      token,
+      expiresAt,
+    });
 
     return {
       token,

@@ -15,4 +15,8 @@ export async function router(app: FastifyInstance) {
   app.get('/me', { preHandler: checkAuth }, async (request, reply) => {
     return container.getMeController.handle(request, reply);
   });
+
+  app.post('/logout', { preHandler: checkAuth }, async (request, response) => {
+    return container.logoutController.handle(request, response);
+  });
 }
