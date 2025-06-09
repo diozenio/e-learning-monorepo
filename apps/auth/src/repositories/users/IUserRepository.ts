@@ -25,6 +25,13 @@ export interface IUserRepository {
   }): Promise<UserModel>;
 
   /**
+   * Finds a user by their ID.
+   * @param id - The ID of the user to find.
+   * @returns A promise that resolves to the user if found, or null if not found.
+   */
+  findById(id: string): Promise<UserModel | null>;
+
+  /**
    * Converts a user object to a UserModel.
    * @param user - The user object to convert.
    * @returns The converted UserModel.

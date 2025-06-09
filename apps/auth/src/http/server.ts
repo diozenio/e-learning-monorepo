@@ -1,3 +1,4 @@
+import cookie from '@fastify/cookie';
 import fastify from 'fastify';
 
 import { env } from '@/env';
@@ -10,6 +11,8 @@ const app = fastify();
 corsPlugin(app);
 
 app.setErrorHandler(errorHandler);
+
+app.register(cookie);
 
 app.register(router, { prefix: '/auth' });
 

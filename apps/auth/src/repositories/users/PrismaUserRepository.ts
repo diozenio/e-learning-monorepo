@@ -29,6 +29,14 @@ export class PrismaUserRepository implements IUserRepository {
     return this.toUser(newUserFromDb);
   }
 
+  async findById(id: string): Promise<UserModel | null> {
+    const userFromDb = await prisma.user.findUnique({ where: { id } });
+    if (!userFromDb) {
+      return null;
+    }
+    return this.toUser(userFromDb);
+  }
+
   toUser(prismaUser: User): UserModel {
     return {
       id: prismaUser.id,
