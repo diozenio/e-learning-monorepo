@@ -13,4 +13,6 @@ export default abstract class AuthUseCase {
   ): Promise<SignUpResponse>;
 
   abstract getUserSession(): Promise<User>;
+
+  abstract logout(): Promise<void>;
 }

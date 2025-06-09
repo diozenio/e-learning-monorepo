@@ -31,4 +31,8 @@ export default class AuthAPI extends AuthAdapter {
 
     return data.data;
   }
+
+  async logout(): Promise<void> {
+    await authClient.post('/auth/logout');
+  }
 }

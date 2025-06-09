@@ -13,4 +13,8 @@ export default class AuthService extends AuthUseCase {
   async getUserSession(): Promise<User> {
     return this.adapter.getUserSession();
   }
+
+  async logout(): Promise<void> {
+    await this.adapter.logout();
+  }
 }

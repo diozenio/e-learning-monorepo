@@ -10,4 +10,6 @@ export default abstract class AuthAdapter {
   ): Promise<SignUpResponse>;
 
   abstract getUserSession(): Promise<User>;
+
+  abstract logout(): Promise<void>;
 }
