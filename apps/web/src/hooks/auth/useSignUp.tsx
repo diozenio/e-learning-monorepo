@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 import { signupAction } from '@/app/(public)/auth/signup/actions';
 import { AuthPayload } from '@/core/domain/models/auth';
