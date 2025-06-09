@@ -1,0 +1,25 @@
+{
+  "name": "@elearning/auth-tokens",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint --fix",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2",
+    "dayjs": "^1.11.13"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.9",
+    "@elearning/eslint-config": "workspace:*",
+    "@elearning/typescript-config": "workspace:*",
+    "typescript": "5.8.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

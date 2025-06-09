@@ -1,4 +1,6 @@
-import { generateToken } from '@/lib/jwt/generateToken';
+import { generateToken } from '@elearning/auth-tokens';
+
+import { env } from '@/env';
 import { hashPassword } from '@/lib/security/password';
 import { IUserRepository } from '@/repositories/users';
 import { AppError } from '@/shared/http/errors/AppError';
@@ -42,6 +44,7 @@ class SignupUseCase {
 
     const token = generateToken({
       payload: { sub: user.id, email: user.email },
+      secret: env.JWT_SECRET,
     });
 
     if (!token) {

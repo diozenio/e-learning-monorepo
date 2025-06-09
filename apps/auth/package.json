@@ -14,13 +14,12 @@
     "bcryptjs": "^3.0.2",
     "dayjs": "^1.11.13",
     "fastify": "^5.2.2",
-    "jsonwebtoken": "^9.0.2",
-    "zod": "^3.24.2"
+    "zod": "^3.24.2",
+    "@elearning/auth-tokens": "workspace:*"
   },
   "devDependencies": {
     "@elearning/eslint-config": "workspace:*",
     "@elearning/typescript-config": "workspace:*",
-    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.15.3",
     "dotenv": "^16.5.0",
     "eslint": "^9.26.0",
