@@ -9,6 +9,7 @@ import {
 } from 'react';
 
 import { User } from '@/core/domain/models/auth';
+import { useLogout } from '@/hooks/auth/useLogout';
 import { useUserSession } from '@/hooks/auth/useUserSession';
 import { useAppLoadingStore } from '@/store/appLoading';
 
@@ -16,6 +17,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   isAuthenticating: boolean;
   user: User | null;
+  logout: () => void;
   // Add any other authentication-related methods or properties here
 }
 
@@ -23,6 +25,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: PropsWithChildren) {
   const { user, fetchUserSession, isLoading, error } = useUserSession();
+  const { logout } = useLogout();
   const { setLoadingState } = useAppLoadingStore();
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -43,16 +46,17 @@ export function AuthProvider({ children }: PropsWithChildren) {
     if (error) {
       console.error('Authentication error:', error);
       setIsAuthenticated(false);
-      // Optionally, you can redirect to a login page or show an error message
+      logout();
     }
-  }, [error]);
+  }, [error, logout]);
 
   return (
     <AuthContext.Provider
       value={{
+        user,
         isAuthenticated,
         isAuthenticating: isLoading,
-        user,
+        logout,
       }}
     >
       {children}
