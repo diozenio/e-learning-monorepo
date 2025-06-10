@@ -14,5 +14,15 @@ services:
     volumes:
       - elearning_pg_data:/var/lib/postgresql/data # Volume to persist e-learning data
 
+  # Redis service for caching and session management
+  elearning_redis:
+    image: redis:7-alpine
+    container_name: elearning_redis_container
+    ports:
+      - '6379:6379' # Default Redis port
+    volumes:
+      - elearning_redis_data:/data # Volume to persist Redis data
+
 volumes:
   elearning_pg_data: # Named volume declaration, specific to the PostgreSQL data for e-learning
+  elearning_redis_data: # Named volume for Redis data

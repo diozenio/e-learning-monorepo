@@ -1,2 +1,2 @@
 export * from './IUserSessionRepository';
-export * from './PrismaUserSessionRepository';
+export * from './UserSessionRepository';

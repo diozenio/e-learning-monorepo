@@ -16,6 +16,7 @@ const envSchema = z.object({
     }),
   DATABASE_URL: z.string().url(),
   JWT_SECRET: z.string().min(1, 'JWT_SECRET is required and cannot be empty'),
+  REDIS_URL: z.string().url().default('redis://localhost:6379'),
 });
 
 export const env = envSchema.parse(process.env);

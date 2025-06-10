@@ -8,18 +8,20 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@elearning/auth-tokens": "workspace:*",
     "@fastify/cookie": "^11.0.2",
     "@fastify/cors": "^11.0.1",
     "@prisma/client": "^6.8.2",
     "bcryptjs": "^3.0.2",
     "dayjs": "^1.11.13",
     "fastify": "^5.2.2",
-    "zod": "^3.24.2",
-    "@elearning/auth-tokens": "workspace:*"
+    "ioredis": "^5.6.1",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@elearning/eslint-config": "workspace:*",
     "@elearning/typescript-config": "workspace:*",
+    "@types/ioredis": "^5.0.0",
     "@types/node": "^22.15.3",
     "dotenv": "^16.5.0",
     "eslint": "^9.26.0",

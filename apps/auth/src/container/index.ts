@@ -8,12 +8,12 @@ import {
   SignupController,
   SignupUseCase,
 } from '@/modules';
-import { PrismaUserSessionRepository } from '@/repositories/user-sessions';
+import { UserSessionRepository } from '@/repositories/user-sessions';
 import { PrismaUserRepository } from '@/repositories/users';
 
 // Repositories
 const userRepository = new PrismaUserRepository();
-const userSessionRepository = new PrismaUserSessionRepository();
+const userSessionRepository = new UserSessionRepository();
 
 // Use Cases
 const loginUseCase = new LoginUseCase(userRepository, userSessionRepository);
@@ -32,4 +32,5 @@ export const container = {
   signupController,
   getMeController,
   logoutController,
+  userSessionRepository,
 };

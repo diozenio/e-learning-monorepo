@@ -12,7 +12,7 @@ class LogoutUseCase {
     const sessionExists = await this.userSessionRepository.findByToken(token);
 
     if (!sessionExists) {
-      throw new AppError('Session not found or already expired.', 404);
+      return;
     }
 
     await this.userSessionRepository.delete(token);
