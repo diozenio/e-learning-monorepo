@@ -1,4 +1,9 @@
-import { LoginResponse, SignUpResponse, User } from '@/core/domain/models/auth';
+import {
+  LoginResponse,
+  LogoutResponse,
+  SignUpResponse,
+  User,
+} from '@/core/domain/models/auth';
 import AuthAdapter from '@/core/interfaces/adapters/AuthAdapter';
 
 export default abstract class AuthUseCase {
@@ -14,5 +19,5 @@ export default abstract class AuthUseCase {
 
   abstract getUserSession(): Promise<User>;
 
-  abstract logout(): Promise<void>;
+  abstract logout(): Promise<LogoutResponse>;
 }

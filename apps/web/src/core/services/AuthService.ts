@@ -1,4 +1,3 @@
-import { User } from '@/core/domain/models/auth';
 import AuthUseCase from '@/core/interfaces/usecases/AuthUseCase';
 
 export default class AuthService extends AuthUseCase {
@@ -10,11 +9,11 @@ export default class AuthService extends AuthUseCase {
     return this.adapter.signUpWithCredentials(email, password, name);
   }
 
-  async getUserSession(): Promise<User> {
+  async getUserSession() {
     return this.adapter.getUserSession();
   }
 
-  async logout(): Promise<void> {
-    await this.adapter.logout();
+  async logout() {
+    return this.adapter.logout();
   }
 }

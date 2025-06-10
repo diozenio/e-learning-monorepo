@@ -22,3 +22,9 @@ export type SignUpResponse = {
   message: string;
   data: AuthPayload;
 };
+
+export type LogoutResponse = {
+  success: boolean;
+  statusCode: number;
+  message: string;
+};
