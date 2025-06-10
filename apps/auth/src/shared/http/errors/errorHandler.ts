@@ -1,8 +1,8 @@
-import { FastifyError, FastifyReply, FastifyRequest } from "fastify";
-import { ZodError } from "zod";
+import { FastifyError, FastifyReply, FastifyRequest } from 'fastify';
+import { ZodError } from 'zod';
 
-import { AppError } from "./AppError";
-import { ValidationError } from "./ValidationError";
+import { AppError } from './AppError';
+import { ValidationError } from './ValidationError';
 
 export async function errorHandler(
   error: FastifyError,
@@ -20,5 +20,5 @@ export async function errorHandler(
 
   console.error(error);
 
-  return reply.status(500).send(new AppError("Internal server error", 500));
+  return reply.status(500).send(new AppError('Internal server error', 500));
 }

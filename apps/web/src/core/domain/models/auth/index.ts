@@ -10,12 +10,14 @@ export type AuthPayload = {
 };
 
 export type LoginResponse = {
+  success: boolean;
   statusCode: number;
   message: string;
   data: AuthPayload;
 };
 
 export type SignUpResponse = {
+  success: boolean;
   statusCode: number;
   message: string;
   data: AuthPayload;

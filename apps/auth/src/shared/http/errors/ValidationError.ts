@@ -20,6 +20,7 @@ export class ValidationError extends ErrorBase<ValidationErrorType> {
 
   public toResponse() {
     return {
+      success: false,
       message: this.message,
       statusCode: this.statusCode,
       errors: Object.fromEntries(this.errors ?? []),

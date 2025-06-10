@@ -10,7 +10,8 @@ export abstract class ErrorBase<ErrorType = string[]> extends HttpResponse {
 
   public abstract toResponse(): {
     message: string;
-    statusCode: number;
     errors: unknown;
+    success: boolean;
+    statusCode: number;
   };
 }
