@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import {
   createContext,
   PropsWithChildren,
@@ -8,6 +9,8 @@ import {
   useState,
 } from 'react';
 
+import { clearCookiesAction } from '@/app/(private)/actions';
+import { REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE } from '@/constants';
 import { User } from '@/core/domain/models/auth';
 import { useLogout } from '@/hooks/auth/useLogout';
 import { useUserSession } from '@/hooks/auth/useUserSession';
@@ -24,6 +27,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: PropsWithChildren) {
+  const router = useRouter();
   const { user, fetchUserSession, isLoading, error } = useUserSession();
   const { logout } = useLogout();
   const { setLoadingState } = useAppLoadingStore();
@@ -46,9 +50,11 @@ export function AuthProvider({ children }: PropsWithChildren) {
     if (error) {
       console.error('Authentication error:', error);
       setIsAuthenticated(false);
-      logout();
+      clearCookiesAction().then(() => {
+        router.push(REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE);
+      });
     }
-  }, [error, logout]);
+  }, [error, router]);
 
   return (
     <AuthContext.Provider

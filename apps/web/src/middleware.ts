@@ -1,6 +1,8 @@
 import { AUTH_COOKIE_NAME, isTokenExpired } from '@elearning/auth-tokens';
 import { MiddlewareConfig, NextRequest, NextResponse } from 'next/server';
 
+import { REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE } from '@/constants';
+
 interface Routes {
   path: string;
   whenAuthenticated?: 'redirect' | 'next';
@@ -10,8 +12,6 @@ const publicRoutes: Routes[] = [
   { path: '/auth/login', whenAuthenticated: 'redirect' },
   { path: '/auth/signup', whenAuthenticated: 'redirect' },
 ];
-
-const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = '/auth/login';
 
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;

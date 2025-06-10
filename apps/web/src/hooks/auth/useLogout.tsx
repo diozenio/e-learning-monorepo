@@ -1,7 +1,12 @@
+import { useRouter } from 'next/navigation';
+
 import { clearCookiesAction } from '@/app/(private)/actions';
+import { REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE } from '@/constants';
 import { services } from '@/container';
 
 export function useLogout() {
+  const router = useRouter();
+
   const logout = async () => {
     try {
       const { success: logoutSuccess } = await services.AuthService.logout();
@@ -10,7 +15,7 @@ export function useLogout() {
         const { success: clearCookiesSuccess } = await clearCookiesAction();
 
         if (clearCookiesSuccess) {
-          window.location.reload();
+          router.push(REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE);
         }
       }
     } catch (error) {
