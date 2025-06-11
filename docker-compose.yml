@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  # PostgreSQL service for the e-learning-monorepo
+  elearning_postgres:
+    image: postgres
+    container_name: elearning_postgres_db_container
+    environment:
+      POSTGRES_USER: elearning_user # Specific user for the project
+      POSTGRES_PASSWORD: elearning_password # Password (in a real environment, use secrets or .env)
+      POSTGRES_DB: elearning_main_db # Main database for the e-learning project
+    ports:
+      - '5432:5432' # Default PostgreSQL port
+    volumes:
+      - elearning_pg_data:/var/lib/postgresql/data # Volume to persist e-learning data
+
+  # Redis service for caching and session management
+  elearning_redis:
+    image: redis:7-alpine
+    container_name: elearning_redis_container
+    ports:
+      - '6379:6379' # Default Redis port
+    volumes:
+      - elearning_redis_data:/data # Volume to persist Redis data
+
+volumes:
+  elearning_pg_data: # Named volume declaration, specific to the PostgreSQL data for e-learning
+  elearning_redis_data: # Named volume for Redis data
