@@ -11,9 +11,15 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@elearning/auth-tokens": "workspace:*",
+    "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-checkbox": "^1.3.2",
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-dropdown-menu": "^2.1.15",
     "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-separator": "^1.1.7",
     "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-tooltip": "^1.2.7",
     "@tailwindcss/postcss": "^4.1.7",
     "@tanstack/react-query": "^5.77.0",
     "axios": "^1.9.0",
@@ -28,8 +34,7 @@
     "tailwind-merge": "^3.3.0",
     "tailwindcss": "^4.1.7",
     "zod": "^3.25.23",
-    "zustand": "^5.0.5",
-    "@elearning/auth-tokens": "workspace:*"
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@elearning/eslint-config": "workspace:*",
