@@ -16,14 +16,14 @@
     "dayjs": "^1.11.13",
     "fastify": "^5.2.2",
     "ioredis": "^5.6.1",
-    "zod": "^3.24.2"
+    "zod": "^3.24.2",
+    "dotenv": "^16.5.0"
   },
   "devDependencies": {
     "@elearning/eslint-config": "workspace:*",
     "@elearning/typescript-config": "workspace:*",
     "@types/ioredis": "^5.0.0",
     "@types/node": "^22.15.3",
-    "dotenv": "^16.5.0",
     "eslint": "^9.26.0",
     "prisma": "^6.8.2",
     "tsx": "^4.19.4",
