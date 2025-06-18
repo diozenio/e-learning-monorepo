@@ -113,10 +113,6 @@ function SidebarProvider({
   // This makes it easier to style the sidebar with Tailwind classes.
   const state = open ? 'expanded' : 'collapsed';
 
-  console.log(
-    `Sidebar state: ${state}, open: ${open}, openMobile: ${openMobile}`
-  );
-
   const contextValue = React.useMemo<SidebarContextProps>(
     () => ({
       state,
