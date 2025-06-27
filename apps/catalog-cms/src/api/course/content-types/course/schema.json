@@ -50,9 +50,7 @@
         }
       },
       "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "course_category": {
       "type": "relation",
@@ -76,11 +74,7 @@
         }
       },
       "default": "beginner",
-      "enum": [
-        "beginner",
-        "intermediate",
-        "advanced"
-      ]
+      "enum": ["beginner", "intermediate", "advanced"]
     },
     "requiredLevel": {
       "type": "integer",
