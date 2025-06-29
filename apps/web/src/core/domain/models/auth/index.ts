@@ -1,3 +1,5 @@
+import { ApiResponse } from '@/core/domain/types/ApiResponse';
+
 export type User = {
   id: string;
   name: string;
@@ -10,22 +12,8 @@ export type AuthPayload = {
   user: User;
 };
 
-export type LoginResponse = {
-  success: boolean;
-  statusCode: number;
-  message: string;
-  data: AuthPayload;
-};
+export type LoginResponse = ApiResponse<AuthPayload>;
 
-export type SignUpResponse = {
-  success: boolean;
-  statusCode: number;
-  message: string;
-  data: AuthPayload;
-};
+export type SignUpResponse = ApiResponse<AuthPayload>;
 
-export type LogoutResponse = {
-  success: boolean;
-  statusCode: number;
-  message: string;
-};
+export type LogoutResponse = ApiResponse;
