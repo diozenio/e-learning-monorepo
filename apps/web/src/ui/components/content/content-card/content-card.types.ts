@@ -1,23 +1,6 @@
-export type ContentCardVariant =
-  | 'locked'
-  | 'available'
-  | 'completed'
-  | 'in-progress';
+import { Course } from '@/core/domain/models/catalog';
 
-export type ContentCardDifficulty = 'beginner' | 'intermediate' | 'advanced';
-
-export interface ContentCardProps {
-  title?: string;
-  description?: string;
-  image?: string;
-  variant?: ContentCardVariant;
-  category?: string;
-  price?: number;
-  duration?: number;
-  durationLeft?: number;
-  difficulty?: ContentCardDifficulty;
-  modules?: number;
-  requiredLevel?: number;
+export interface ContentCardProps extends Course {
   onReadMore?: () => void;
   onBuyCourse?: () => void;
   loading?: boolean;

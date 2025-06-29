@@ -17,7 +17,7 @@ import {
 
 const cardVariants = cva('gap-0 p-0 hover:cursor-pointer', {
   variants: {
-    variant: {
+    status: {
       locked: 'hover:cursor-default select-none',
       available: '',
       completed: '',
@@ -27,12 +27,12 @@ const cardVariants = cva('gap-0 p-0 hover:cursor-pointer', {
 });
 
 function ContentCard(props: ContentCardProps) {
-  const { title, description, variant = 'locked', loading = false } = props;
+  const { title, description, status = 'locked', loading = false } = props;
 
   if (loading) return <ContentCardSkeleton />;
 
   return (
-    <Card className={cardVariants({ variant })}>
+    <Card className={cardVariants({ status })}>
       <ContentCardImage {...props} />
       <CardContent className="px-5 pb-6 pt-8">
         <div className="flex flex-col gap-3">

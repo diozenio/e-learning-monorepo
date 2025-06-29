@@ -11,7 +11,7 @@ const cardImageContainerVariants = cva(
   'transition-all duration-300 ease-in-out group-hover/card:h-32',
   {
     variants: {
-      variant: {
+      status: {
         locked: 'transition-none group-hover/card:h-52',
         available: '',
         completed: 'group-hover/card:h-40',
@@ -21,11 +21,11 @@ const cardImageContainerVariants = cva(
   }
 );
 
-function ContentCardImage({ image, variant, category }: ContentCardProps) {
-  const locked = variant === 'locked';
+function ContentCardImage({ image, status, category }: ContentCardProps) {
+  const locked = status === 'locked';
 
   return (
-    <CardImageContainer className={cardImageContainerVariants({ variant })}>
+    <CardImageContainer className={cardImageContainerVariants({ status })}>
       <CardImage
         src={image ?? '/images/content/content-card-fallback-image.png'}
         alt="Card Image"

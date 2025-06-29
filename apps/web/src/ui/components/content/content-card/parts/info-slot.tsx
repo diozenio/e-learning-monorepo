@@ -3,15 +3,15 @@ import { CheckCircle2, Clock, Coins, Lock } from 'lucide-react';
 import { ContentCardProps } from '../content-card.types';
 
 function InfoSlot({
-  variant,
+  status,
   requiredLevel,
   price,
   durationLeft,
 }: ContentCardProps) {
-  const locked = variant === 'locked';
-  const available = variant === 'available';
-  const inProgress = variant === 'in-progress';
-  const completed = variant === 'completed';
+  const locked = status === 'locked';
+  const available = status === 'available';
+  const inProgress = status === 'in-progress';
+  const completed = status === 'completed';
 
   return (
     <div className="flex items-center gap-1.5 text-nowrap text-sm">

@@ -11,7 +11,7 @@ const hiddenContentVariants = cva(
   'mt-3 flex h-0 flex-col justify-between overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover/card:opacity-100',
   {
     variants: {
-      variant: {
+      status: {
         locked: 'group-hover/card:h-0 group-hover/card:opacity-0 hidden',
         available: 'group-hover/card:h-20',
         completed: 'group-hover/card:h-12',
@@ -22,7 +22,7 @@ const hiddenContentVariants = cva(
 );
 
 function HiddenArea({
-  variant,
+  status,
   duration = 0,
   durationLeft = 0,
   modules,
@@ -30,14 +30,14 @@ function HiddenArea({
   onBuyCourse,
   difficulty,
 }: ContentCardProps) {
-  const available = variant === 'available';
-  const inProgress = variant === 'in-progress';
-  const completed = variant === 'completed';
+  const available = status === 'available';
+  const inProgress = status === 'in-progress';
+  const completed = status === 'completed';
 
   const progress = ((duration - durationLeft) * 100) / duration;
 
   return (
-    <div className={hiddenContentVariants({ variant })}>
+    <div className={hiddenContentVariants({ status })}>
       <div className="flex w-full flex-row items-center gap-4">
         {available && (
           <>
