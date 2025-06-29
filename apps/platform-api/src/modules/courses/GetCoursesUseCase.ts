@@ -45,6 +45,7 @@ class GetCoursesUseCase {
           // Mocked additional fields
           status: 'available', // Mocked variant
           duration: 12, // Mocked duration
+          durationLeft: 12, // Mocked duration left
           modules: 10, // Mocked modules
         };
       });
