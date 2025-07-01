@@ -1,13 +1,15 @@
 import { Flame, LucideIcon, Puzzle, Sprout } from 'lucide-react';
 
-import { ContentCardDifficulty, ContentCardProps } from '../content-card.types';
+import { CourseDifficulty } from '@/core/domain/models/catalog';
+
+import { ContentCardProps } from '../content-card.types';
 
 type Info = {
   icon: LucideIcon;
   label: string;
 };
 
-const iconMap: Record<ContentCardDifficulty, Info> = {
+const iconMap: Record<CourseDifficulty, Info> = {
   beginner: {
     icon: Sprout,
     label: 'Beginner',
