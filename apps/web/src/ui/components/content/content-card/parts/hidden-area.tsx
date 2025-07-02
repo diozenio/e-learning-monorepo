@@ -62,7 +62,7 @@ function HiddenArea({
             <DifficultyInfo difficulty={difficulty} />
 
             <div className="text-muted-foreground ml-auto flex items-center gap-1.5 text-sm">
-              <span>{modules} modules</span>
+              <span>{modules?.length} modules</span>
             </div>
           </>
         )}
