@@ -1,6 +1,55 @@
 import { env } from '@/env';
 import { cmsApi } from '@/shared/lib/axios';
 
+interface StrapiMedia {
+  id: number;
+  url: string;
+  name: string;
+  ext: string;
+  mime: string;
+  size: number;
+  hash: string;
+  provider: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+interface KeyPoint {
+  id: number;
+  text: string;
+}
+
+interface Lesson {
+  id: number;
+  documentId: string;
+  title: string;
+  slug: string;
+  description: Array<{
+    type: string;
+    children: Array<{
+      text: string;
+      type: string;
+    }>;
+  }>;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  video: StrapiMedia | null;
+  key_points: KeyPoint[];
+}
+
+interface Module {
+  id: number;
+  title: string;
+  lessons: Lesson[];
+}
+
+interface CourseCategory {
+  name: string;
+}
+
 interface StrapiCourse {
   id: number;
   slug: string;
@@ -9,12 +58,9 @@ interface StrapiCourse {
   price: number;
   difficulty: 'beginner' | 'intermediate' | 'advanced';
   requiredLevel: number;
-  image?: {
-    url: string;
-  };
-  course_category?: {
-    name: string;
-  };
+  image?: StrapiMedia;
+  course_category?: CourseCategory;
+  modules: Module[];
 }
 
 class GetCoursesUseCase {
@@ -24,7 +70,17 @@ class GetCoursesUseCase {
         '/courses',
         {
           params: {
-            populate: ['image', 'course_category'],
+            populate: {
+              image: true,
+              course_category: true,
+              modules: {
+                populate: {
+                  lessons: {
+                    populate: ['video', 'key_points'],
+                  },
+                },
+              },
+            },
           },
         }
       );
@@ -42,11 +98,11 @@ class GetCoursesUseCase {
           price: course.price,
           difficulty: course.difficulty,
           requiredLevel: course.requiredLevel,
+          modules: course.modules ?? [],
           // Mocked additional fields
           status: 'available', // Mocked variant
           duration: 12, // Mocked duration
           durationLeft: 12, // Mocked duration left
-          modules: 10, // Mocked modules
         };
       });
 

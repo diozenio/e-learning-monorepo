@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_lesson_key_points",
+  "info": {
+    "displayName": "Key Point",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  },
+  "config": {}
+}
