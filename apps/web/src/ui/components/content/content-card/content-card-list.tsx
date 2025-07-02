@@ -7,10 +7,22 @@ import { ContentCard } from './content-card';
 function ContentCardList() {
   const { courses, isLoading } = useCourses();
 
+  if (isLoading) {
+    const skeletons = Array.from({ length: 12 }).map((_, index) => (
+      <ContentCard key={index} id={index} loading />
+    ));
+
+    return (
+      <div className="grid auto-rows-min gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        {skeletons}
+      </div>
+    );
+  }
+
   return (
     <div className="grid auto-rows-min gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
       {courses?.map((course, index) => (
-        <ContentCard key={index} {...course} loading={isLoading} />
+        <ContentCard key={index} {...course} />
       ))}
     </div>
   );
