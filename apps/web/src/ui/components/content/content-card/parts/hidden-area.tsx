@@ -1,7 +1,18 @@
 import { cva } from 'class-variance-authority';
 import { Clock } from 'lucide-react';
+import Image from 'next/image';
 
 import { Button } from '@/ui/primitives/button';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/ui/primitives/dialog';
 import { Progress } from '@/ui/primitives/progress';
 
 import { ContentCardProps } from '../content-card.types';
@@ -26,9 +37,11 @@ function HiddenArea({
   duration = 0,
   durationLeft = 0,
   modules,
-  onReadMore,
   onBuyCourse,
   difficulty,
+  image,
+  title,
+  description,
 }: ContentCardProps) {
   const available = status === 'available';
   const inProgress = status === 'in-progress';
@@ -67,9 +80,38 @@ function HiddenArea({
       <div className="grid w-full grid-cols-2 gap-4">
         {available && (
           <>
-            <Button variant="outline" onClick={onReadMore}>
-              Read More
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline">Read More</Button>
+              </DialogTrigger>
+              <DialogContent className="gap-0 p-0" showCloseButton={false}>
+                <div className="bg-muted relative h-56 w-full overflow-hidden rounded-t-lg">
+                  <Image
+                    src={
+                      image ?? '/images/content/content-card-fallback-image.png'
+                    }
+                    alt={title ?? 'Course Image'}
+                    layout="fill"
+                    className="relative w-full object-cover"
+                  />
+                </div>
+                <div className="w-full space-y-2 p-6">
+                  <DialogHeader>
+                    <DialogTitle>{title}</DialogTitle>
+                    <DialogDescription>{description}</DialogDescription>
+                  </DialogHeader>
+                  <DialogFooter className="sm:justify-between">
+                    <DialogClose asChild>
+                      <Button type="button" variant="secondary">
+                        Close
+                      </Button>
+                    </DialogClose>
+                    <Button type="button">Buy Course</Button>
+                  </DialogFooter>
+                </div>
+              </DialogContent>
+            </Dialog>
+
             <Button onClick={onBuyCourse}>Buy Course</Button>
           </>
         )}
