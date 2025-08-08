@@ -56,6 +56,8 @@ function HiddenArea({
 
   const progress = ((duration - durationLeft) * 100) / duration;
 
+  const hasModules = modules && modules.length > 0;
+
   return (
     <div className={hiddenContentVariants({ status })}>
       <div className="flex w-full flex-row items-center gap-4">
@@ -128,12 +130,11 @@ function HiddenArea({
                       </div>
                     </div>
                   </div>
-                  <div className="mt-4 space-y-2">
-                    <h3 className="text-sm font-semibold">Modules</h3>
-                    <div className="space-y-1.5">
-                      {modules &&
-                        modules.length > 0 &&
-                        modules?.map((module) => (
+                  {hasModules && (
+                    <div className="mt-4 space-y-2">
+                      <h3 className="text-sm font-semibold">Modules</h3>
+                      <div className="space-y-1.5">
+                        {modules?.map((module) => (
                           <Accordion
                             type="single"
                             className="rounded border"
@@ -161,8 +162,9 @@ function HiddenArea({
                             </AccordionItem>
                           </Accordion>
                         ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                   <DialogFooter className="mt-8 sm:justify-between">
                     <DialogClose asChild>
                       <Button type="button" variant="secondary">
