@@ -24,7 +24,7 @@ function AuthLayout({ title, description, children }: AuthLayoutProps) {
       <div className="h-full w-1/2">
         <div className="bg-primary relative h-full w-full select-none">
           <Image
-            src={'/images/auth.jpg'}
+            src={'/images/auth.webp'}
             fill
             alt="Background"
             className="object-cover"
