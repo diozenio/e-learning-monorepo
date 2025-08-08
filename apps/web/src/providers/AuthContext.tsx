@@ -48,7 +48,6 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     if (error) {
-      console.error('Authentication error:', error);
       setIsAuthenticated(false);
       clearCookiesAction().then(() => {
         router.push(REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE);
