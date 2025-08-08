@@ -51,8 +51,6 @@ export class UserSessionRepository implements IUserSessionRepository {
       return JSON.parse(cachedSession) as UserSessionModel;
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-
     const session = await prisma.userSession.findUnique({
       where: { token },
     });
