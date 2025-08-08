@@ -5,6 +5,7 @@ export const loginParams = z.object({
   password: z.string({
     invalid_type_error: 'Invalid password.',
   }),
+  remember: z.boolean().optional(),
 });
 
 export type LoginParams = z.infer<typeof loginParams>;

@@ -6,7 +6,11 @@ import {
 } from '@/core/domain/models/auth';
 
 export default abstract class AuthAdapter {
-  abstract login(email: string, password: string): Promise<LoginResponse>;
+  abstract login(
+    email: string,
+    password: string,
+    remember: boolean
+  ): Promise<LoginResponse>;
 
   abstract signUpWithCredentials(
     email: string,

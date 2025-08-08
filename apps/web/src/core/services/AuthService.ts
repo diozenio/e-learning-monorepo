@@ -1,8 +1,8 @@
 import AuthUseCase from '@/core/interfaces/usecases/AuthUseCase';
 
 export default class AuthService extends AuthUseCase {
-  async login(email: string, password: string) {
-    return this.adapter.login(email, password);
+  async login(email: string, password: string, remember: boolean) {
+    return this.adapter.login(email, password, remember);
   }
 
   async signUpWithCredentials(email: string, password: string, name: string) {

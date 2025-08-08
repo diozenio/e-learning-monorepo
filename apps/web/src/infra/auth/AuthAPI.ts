@@ -7,10 +7,11 @@ export default class AuthAPI extends AuthAdapter {
     super();
   }
 
-  async login(email: string, password: string) {
+  async login(email: string, password: string, remember: boolean) {
     const { data } = await authClient.post('/auth/login', {
       email,
       password,
+      remember,
     });
 
     return data;

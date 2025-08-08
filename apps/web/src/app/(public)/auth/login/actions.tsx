@@ -13,9 +13,13 @@ export async function loginAction(
   formData: FormData
 ): Promise<FormState<AuthPayload>> {
   try {
-    const { email, password } = validateLoginCredentials(formData);
+    const { email, password, remember } = validateLoginCredentials(formData);
 
-    const response = await services.AuthService.login(email, password);
+    const response = await services.AuthService.login(
+      email,
+      password,
+      remember
+    );
     const data = response.data;
 
     await sessionCookieStore.set(data.token);

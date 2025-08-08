@@ -9,7 +9,11 @@ import AuthAdapter from '@/core/interfaces/adapters/AuthAdapter';
 export default abstract class AuthUseCase {
   constructor(protected readonly adapter: AuthAdapter) {}
 
-  abstract login(email: string, password: string): Promise<LoginResponse>;
+  abstract login(
+    email: string,
+    password: string,
+    remember: boolean
+  ): Promise<LoginResponse>;
 
   abstract signUpWithCredentials(
     email: string,

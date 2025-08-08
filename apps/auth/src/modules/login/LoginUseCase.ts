@@ -15,7 +15,7 @@ class LoginUseCase {
     private userSessionRepository: IUserSessionRepository
   ) {}
 
-  async execute({ email, password }: LoginParams) {
+  async execute({ email, password, remember }: LoginParams) {
     const user = await this.userRepository.findByEmail(email);
 
     if (!user) {
@@ -34,9 +34,12 @@ class LoginUseCase {
       );
     }
 
+    const timeToExpire = remember ? '30d' : '1h';
+
     const token = generateToken({
       payload: { sub: user.id, email: user.email },
       secret: env.JWT_SECRET,
+      expiresIn: timeToExpire,
     });
 
     if (!token) {
@@ -46,7 +49,9 @@ class LoginUseCase {
       );
     }
 
-    const expiresAt = dayjs().add(30, 'days').toDate(); //
+    const expiresAt = remember
+      ? dayjs().add(30, 'days').toDate()
+      : dayjs().add(1, 'hour').toDate();
 
     await this.userSessionRepository.create({
       userId: user.id,
