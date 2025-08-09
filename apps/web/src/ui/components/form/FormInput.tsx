@@ -10,6 +10,7 @@ interface FormInputProps {
   type?: string;
   required?: boolean;
   errors?: string[];
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function FormInput({
