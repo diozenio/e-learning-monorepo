@@ -40,7 +40,10 @@ function LoginForm() {
         </div>
         <div className="flex justify-between gap-2">
           <FormCheckbox name="remember" label="Remember me" />
-          <Link className="text-sm underline hover:no-underline" href="#">
+          <Link
+            className="text-sm underline hover:no-underline"
+            href="/auth/forgot-password"
+          >
             Forgot password?
           </Link>
         </div>

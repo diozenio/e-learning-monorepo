@@ -11,6 +11,7 @@ interface Routes {
 const publicRoutes: Routes[] = [
   { path: '/auth/login', whenAuthenticated: 'redirect' },
   { path: '/auth/signup', whenAuthenticated: 'redirect' },
+  { path: '/auth/forgot-password', whenAuthenticated: 'redirect' },
 ];
 
 export function middleware(request: NextRequest) {
